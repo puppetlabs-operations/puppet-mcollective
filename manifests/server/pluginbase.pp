@@ -20,6 +20,7 @@ class mcollective::server::pluginbase {
     mode    => '0755',
     purge   => true,
     recurse => true,
+    force   => true,
   }
 
   file { $plugin_dirs:
