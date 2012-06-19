@@ -4,7 +4,7 @@ define mcollective::plugin($type, $has_ddl = false) {
 
   require mcollective::server::pluginbase
 
-  $filebase = "${mcollective::params::libdir}/${type}/${name}"
+  $filebase = "${mcollective::params::libdir}/mcollective/${type}/${name}"
 
   # This assumes that we're only going to install vendored plugins. This is
   # fucking silly and lazy.
@@ -13,7 +13,7 @@ define mcollective::plugin($type, $has_ddl = false) {
     mode   => '0644',
     owner  => 'root',
     group  => 'root',
-    source => "puppet:///modules/mcollective/${type}/${name}.rb",
+    source => "puppet:///modules/mcollective/plugins/${type}/${name}.rb",
     before => Service['mcollective'],
   }
 
@@ -23,7 +23,7 @@ define mcollective::plugin($type, $has_ddl = false) {
       mode   => '0644',
       owner  => 'root',
       group  => 'root',
-      source => "puppet:///modules/mcollective/${type}/${name}.ddl",
+      source => "puppet:///modules/mcollective/plugins/${type}/${name}.ddl",
       before => Service['mcollective'],
     }
   }
