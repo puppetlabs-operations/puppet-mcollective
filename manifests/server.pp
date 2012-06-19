@@ -32,8 +32,9 @@ class mcollective::server (
   }
 
   service { 'mcollective':
-    ensure  => running,
-    enable  => true,
-    require => File['/etc/mcollective/server.cfg'],
+    ensure    => running,
+    enable    => true,
+    require   => File['/etc/mcollective/server.cfg'],
+    subscribe => File['/etc/mcollective/server.cfg'],
   }
 }
