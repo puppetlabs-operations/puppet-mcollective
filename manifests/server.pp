@@ -22,16 +22,18 @@ class mcollective::server (
     ensure => present,
   }
 
-  service { 'mcollective':
-    ensure => running,
-    enable => true,
-  }
-
   file { '/etc/mcollective/server.cfg':
     ensure  => present,
     mode    => '0600',
     owner   => 'root',
     group   => 'root',
     content => template('mcollective/server.cfg.erb'),
+    require => Package['mcollective'],
+  }
+
+  service { 'mcollective':
+    ensure  => running,
+    enable  => true,
+    require => File['/etc/mcollective/server.cfg'],
   }
 }
