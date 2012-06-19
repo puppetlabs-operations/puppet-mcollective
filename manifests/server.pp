@@ -38,6 +38,7 @@ class mcollective::server (
     subscribe => File['/etc/mcollective/server.cfg'],
   }
 
+  include mcollective::server::defaultplugins
   include mcollective::server::pluginbase
   Package['mcollective'] -> Class['mcollective::server::pluginbase']
 }

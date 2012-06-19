@@ -14,7 +14,7 @@ define mcollective::plugin($type, $has_ddl = false) {
     owner  => 'root',
     group  => 'root',
     source => "puppet:///modules/mcollective/${type}/${name}.rb",
-    notify => Service['mcollective'],
+    before => Service['mcollective'],
   }
 
   if $has_ddl {
@@ -24,6 +24,7 @@ define mcollective::plugin($type, $has_ddl = false) {
       owner  => 'root',
       group  => 'root',
       source => "puppet:///modules/mcollective/${type}/${name}.ddl",
+      before => Service['mcollective'],
     }
   }
 }
