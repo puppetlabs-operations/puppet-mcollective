@@ -37,4 +37,7 @@ class mcollective::server (
     require   => File['/etc/mcollective/server.cfg'],
     subscribe => File['/etc/mcollective/server.cfg'],
   }
+
+  include mcollective::server::pluginbase
+  Package['mcollective'] -> Class['mcollective::server::pluginbase']
 }
