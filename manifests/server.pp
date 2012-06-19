@@ -1,9 +1,9 @@
 class mcollective::server (
-  $stomp_host     = $mcollective::params::stomp_host,
-  $stomp_user     = $mcollective::params::stomp_user,
-  $stomp_password = $mcollective::params::stomp_password,
-  $stomp_port     = $mcollective::params::stomp_port,
-  $psk            = $mcollective::params::psk
+  $host     = $mcollective::params::host,
+  $user     = $mcollective::params::user,
+  $password = $mcollective::params::password,
+  $port     = $mcollective::params::port,
+  $psk      = $mcollective::params::psk
 ) inherits mcollective::params {
 
   # ---

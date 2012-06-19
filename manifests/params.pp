@@ -6,12 +6,12 @@ class mcollective::params {
 
   $loglevel = hiera('mcollective_loglevel', 'log')
 
-  $stomp_host = hiera('mcollective_stomp_host')
-  # port 61613 is the standard for the stomp protocol
-  $stomp_port = hiera('mcollective_stomp_port', '61613')
+  $host = hiera('mcollective_host')
+  # port 61613 is more standard for the stomp protocol
+  $port = hiera('mcollective_port', '61613')
 
-  $stomp_user     = hiera('mcollective_stomp_user')
-  $stomp_password = hiera('mcollective_stomp_password')
+  $user     = hiera('mcollective_user')
+  $password = hiera('mcollective_password')
 
   $psk = hiera('mcollective_psk')
 }
