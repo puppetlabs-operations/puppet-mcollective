@@ -9,6 +9,14 @@ class mcollective::server (
   # ---
   # package requirements
 
+  case $operatingsystem {
+    Debian: {
+      package { 'ruby-stomp':
+        ensure => present,
+        before => Package['mcollective'],
+      }
+    }
+
   package { 'mcollective':
     ensure  => present,
   }
