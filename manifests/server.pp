@@ -9,14 +9,14 @@ class mcollective::server (
   # ---
   # package requirements
 
-  package { 'stomp':
-    ensure   => present,
-    provider => gem,
-  }
+  #package { 'stomp':
+  #  ensure   => present,
+  #  provider => gem,
+  #}
 
   package { 'mcollective':
     ensure  => present,
-    require => Package['stomp'],
+    #  require => Package['stomp'],
   }
 
   file { '/etc/mcollective/server.cfg':
