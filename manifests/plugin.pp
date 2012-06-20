@@ -2,7 +2,7 @@ define mcollective::plugin($type, $has_ddl = false) {
 
   include mcollective::params
 
-  require mcollective::server::pluginbase
+  include mcollective::server::pluginbase
 
   $filebase = "${mcollective::params::libdir}/mcollective/${type}/${name}"
 
@@ -14,7 +14,7 @@ define mcollective::plugin($type, $has_ddl = false) {
     owner  => 'root',
     group  => 'root',
     source => "puppet:///modules/mcollective/plugins/${type}/${name}.rb",
-    before => Service['mcollective'],
+    before => [Package['mcollective'], Service['mcollective']],
   }
 
   if $has_ddl {
@@ -24,7 +24,7 @@ define mcollective::plugin($type, $has_ddl = false) {
       owner  => 'root',
       group  => 'root',
       source => "puppet:///modules/mcollective/plugins/${type}/${name}.ddl",
-      before => Service['mcollective'],
+      before => [Package['mcollective'], Service['mcollective']],
     }
   }
 }
