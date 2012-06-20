@@ -9,17 +9,14 @@ class mcollective::server (
   # ---
   # package requirements
 
-  case $osfamily {
-    Debian: {
-      package { 'libstomp-ruby':
-        ensure => present,
-        before => Package['mcollective'],
-      }
-    }
+  package { 'stomp':
+    ensure   => present,
+    provider => gem,
   }
 
   package { 'mcollective':
-    ensure => present,
+    ensure  => present,
+    require => Package['stomp'],
   }
 
   file { '/etc/mcollective/server.cfg':
