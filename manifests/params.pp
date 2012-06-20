@@ -1,8 +1,9 @@
 class mcollective::params {
 
   $topicprefix = '/topic/'
-  $libdir  = '/usr/share/mcollective/plugins'
-  $logfile = '/var/log/mcollective.log'
+  $sharedir    = '/usr/share/mcollective'
+  $libdir      = "${sharedir}/plugins"
+  $logfile     = '/var/log/mcollective.log'
 
   $loglevel = hiera('mcollective_loglevel', 'log')
 

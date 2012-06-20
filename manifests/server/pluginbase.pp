@@ -13,7 +13,7 @@ class mcollective::server::pluginbase {
     "${mcollective::params::libdir}/mcollective/util",
   ]
 
-  file { [$mcollective::params::libdir, "${mcollective::params::libdir}/mcollective"]:
+  file { [$mcollective::params::sharedir, $mcollective::params::libdir, "${mcollective::params::libdir}/mcollective"]:
     ensure  => directory,
     owner   => 'root',
     group   => 'root',
