@@ -16,6 +16,7 @@ class mcollective::server (
         before => Package['mcollective'],
       }
     }
+  }
 
   package { 'mcollective':
     ensure  => present,
