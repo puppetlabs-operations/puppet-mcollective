@@ -5,4 +5,5 @@ class mcollective::server::defaultplugins {
   mcollective::plugin { 'registration/meta':  }
   mcollective::plugin { 'connector/activemq': }
   mcollective::plugin { 'security/psk': }
+  mcollective::plugin { 'audit/logfile': }
 }

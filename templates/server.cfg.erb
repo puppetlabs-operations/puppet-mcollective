@@ -2,8 +2,8 @@ topicprefix = <%= scope.lookupvar('mcollective::params::topicprefix') %>
 libdir      = <%= scope.lookupvar('mcollective::params::libdir') %>
 logfile     = <%= scope.lookupvar('mcollective::params::logfile') %>
 loglevel    = <%= scope.lookupvar('mcollective::params::loglevel') %>
-daemonize   = 1
 identity    = <%= scope.lookupvar('::fqdn') %>
+daemonize   = 1
 
 securityprovider = psk
 plugin.psk       = <%= psk %>
@@ -20,3 +20,8 @@ registerinterval = 300
 registration     = Meta
 
 factsource = facter
+
+rpcaudit         = 1
+rpcauditprovider = logfile
+
+plugin.rpcaudit.logfile = '/var/log/mcollective-audit.log'
