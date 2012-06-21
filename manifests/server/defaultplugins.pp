@@ -3,6 +3,6 @@ class mcollective::server::defaultplugins {
 
   mcollective::plugin { 'facts/facter_facts': }
   mcollective::plugin { 'registration/meta':  }
-  mcollective::plugin { 'conneector/activemq': }
+  mcollective::plugin { 'connector/activemq': }
   mcollective::plugin { 'security/psk': }
 }
