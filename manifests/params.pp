@@ -5,7 +5,7 @@ class mcollective::params {
   $libdir      = "${sharedir}/plugins"
   $logfile     = '/var/log/mcollective.log'
 
-  $loglevel = hiera('mcollective_loglevel', 'log')
+  $loglevel = hiera('mcollective_loglevel', 'warn')
 
   $host = hiera('mcollective_host')
   # port 61613 is more standard for the stomp protocol
