@@ -18,13 +18,6 @@ define mcollective::plugin($has_ddl = false) {
   }
 
   if $has_ddl {
-    file { "${filebase}.ddl":
-      ensure => present,
-      mode   => '0644',
-      owner  => 'root',
-      group  => 'root',
-      source => "puppet:///modules/mcollective/plugins/${name}.ddl",
-      before => [Package['mcollective'], Service['mcollective']],
-    }
+    mcollective::plugin::ddl { $name: }
   }
 }
