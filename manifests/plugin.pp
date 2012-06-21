@@ -1,7 +1,7 @@
 define mcollective::plugin($has_ddl = false) {
 
   include mcollective::params
-
+  include mcollective::server
   include mcollective::server::pluginbase
 
   $filebase = "${mcollective::params::libdir}/mcollective/${name}"
