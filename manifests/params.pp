@@ -9,7 +9,7 @@ class mcollective::params {
 
   $host = hiera('mcollective_host')
   # port 61613 is more standard for the stomp protocol
-  $port = hiera('mcollective_port', '61613')
+  $port = hiera('mcollective_port', '61614')
 
   $user     = hiera('mcollective_user')
   $password = hiera('mcollective_password')
