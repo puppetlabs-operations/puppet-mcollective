@@ -3,7 +3,8 @@ class mcollective::server (
   $user     = $mcollective::params::user,
   $password = $mcollective::params::password,
   $port     = $mcollective::params::port,
-  $psk      = $mcollective::params::psk
+  $psk      = $mcollective::params::psk,
+  $ssl      = true
 ) inherits mcollective::params {
 
   # ---
