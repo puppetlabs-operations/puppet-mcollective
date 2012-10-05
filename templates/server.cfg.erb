@@ -19,8 +19,8 @@ plugin.activemq.pool.1.password = <%= password %>
 <% if ssl -%>
 plugin.activemq.pool.1.ssl      = 1
 plugin.activemq.pool.1.ssl.ca   = <%= scope.lookupvar('::settings::ssldir') + '/certs/ca.pem' %>
-plugin.activemq.pool.1.ssl.key  = <%= scope.lookupvar('::settings::ssldir') + '/private_keys/' + scope.lookupvar('::certname') + '.pem' %>
-plugin.activemq.pool.1.ssl.cert = <%= scope.lookupvar('::settings::ssldir') + '/certs/' + scope.lookupvar('::certname') + '.pem' %>
+plugin.activemq.pool.1.ssl.key  = <%= scope.lookupvar('::settings::ssldir') + '/private_keys/' + scope.lookupvar('::clientcert') + '.pem' %>
+plugin.activemq.pool.1.ssl.cert = <%= scope.lookupvar('::settings::ssldir') + '/certs/' + scope.lookupvar('::clientcert') + '.pem' %>
 <% end -%>
 
 registerinterval = 300
