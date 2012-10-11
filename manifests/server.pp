@@ -48,5 +48,5 @@ class mcollective::server (
   }
 
   include mcollective::server::defaultplugins
-  include mcollective::server::pluginbase
+  include mcollective::server::plugindir
 }

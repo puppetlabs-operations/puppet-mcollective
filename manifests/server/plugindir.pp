@@ -1,4 +1,4 @@
-class mcollective::server::pluginbase {
+class mcollective::server::plugindir {
 
   include mcollective::params
 
