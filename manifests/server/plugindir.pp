@@ -18,9 +18,6 @@ class mcollective::server::plugindir {
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    purge   => true,
-    recurse => true,
-    force   => true,
   }
 
   file { $plugin_dirs:
