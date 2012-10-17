@@ -2,26 +2,11 @@ topicprefix = <%= scope.lookupvar('mcollective::params::topicprefix') %>
 libdir      = <%= scope.lookupvar('mcollective::params::libdir') %>
 logfile     = <%= scope.lookupvar('mcollective::params::logfile') %>
 loglevel    = <%= scope.lookupvar('mcollective::params::loglevel') %>
-identity    = <%= scope.lookupvar('::fqdn') %>
+identity    = <%= scope.lookupvar('::clientcert') %>
 daemonize   = 1
 
-securityprovider = psk
-plugin.psk       = <%= psk %>
-
-connector = activemq
-plugin.activemq.pool.size = 1
-
-plugin.activemq.pool.1.host     = <%= host %>
-plugin.activemq.pool.1.port     = <%= port %>
-plugin.activemq.pool.1.user     = <%= user %>
-plugin.activemq.pool.1.password = <%= password %>
-
-<% if ssl -%>
-plugin.activemq.pool.1.ssl      = 1
-plugin.activemq.pool.1.ssl.ca   = <%= scope.lookupvar('::settings::ssldir') + '/certs/ca.pem' %>
-plugin.activemq.pool.1.ssl.key  = <%= scope.lookupvar('::settings::ssldir') + '/private_keys/' + scope.lookupvar('::clientcert') + '.pem' %>
-plugin.activemq.pool.1.ssl.cert = <%= scope.lookupvar('::settings::ssldir') + '/certs/' + scope.lookupvar('::clientcert') + '.pem' %>
-<% end -%>
+main_collective = <%= main_collective %>
+collectives     = <%= collectives.join(',') %>
 
 registerinterval = 300
 registration     = Meta

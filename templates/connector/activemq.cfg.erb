@@ -1,0 +1,17 @@
+# ActiveMQ connector configuration
+connector = activemq
+plugin.activemq.pool.size = <%= pool.size %>
+
+<% pool.each_index do |idx| -%>
+<% pool_number = idx + 1 -%>
+<% %w{host port user password}.each do |field| -%>
+plugin.activemq.pool.<%= pool_number %>.<%= field %> = <%= pool[idx][field] %>
+<% end -%>
+
+<% if pool[idx]["ssl"] -%>
+plugin.activemq.pool.<%= pool_number %>.ssl = 1
+<% %w{ca key cert}.each do |field| -%>
+plugin.activemq.pool.<%= pool_number %>.ssl.<%= field %> = <%= pool[idx]["ssl"][field] %>
+<% end -%>
+<% end -%>
+<% end -%>

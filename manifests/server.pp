@@ -1,11 +1,4 @@
-class mcollective::server (
-  $host     = $mcollective::params::host,
-  $user     = $mcollective::params::user,
-  $password = $mcollective::params::password,
-  $port     = $mcollective::params::port,
-  $psk      = $mcollective::params::psk,
-  $ssl      = true
-) inherits mcollective::params {
+class mcollective::server($main_collective = 'mcollective', $collectives = ['mcollective']) {
 
   # ---
   # package requirements
@@ -31,13 +24,17 @@ class mcollective::server (
     group  => 'root',
   }
 
-  file { '/etc/mcollective/server.cfg':
-    ensure  => present,
+  concat { '/etc/mcollective/server.cfg':
     mode    => '0600',
     owner   => 'root',
     group   => 'root',
-    content => template('mcollective/server.cfg.erb'),
     before => Package['mcollective'],
+  }
+
+  concat::fragment { 'mcollective base':
+    order   => 0,
+    content => template('mcollective/server.cfg.erb'),
+    target  => '/etc/mcollective/server.cfg',
   }
 
   service { 'mcollective':
