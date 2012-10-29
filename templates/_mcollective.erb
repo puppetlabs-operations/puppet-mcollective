@@ -1,0 +1,8 @@
+libdir      = <%= scope.lookupvar('mcollective::params::libdir') %>
+loglevel    = <%= scope.lookupvar('mcollective::params::loglevel') %>
+logfile     = <%= File.join(homedir, '.mcollective.log') %>
+
+main_collective = <%= main_collective %>
+collectives     = <%= collectives.join(',') %>
+
+factsource = facter
