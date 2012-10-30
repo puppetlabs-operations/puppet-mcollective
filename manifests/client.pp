@@ -43,7 +43,7 @@ define mcollective::client(
   }
 
   file { "${homedir}/.puppet/puppet.conf":
-    ensure  => directory,
+    ensure  => present,
     owner   => $name,
     group   => $group,
     mode    => '0600',
