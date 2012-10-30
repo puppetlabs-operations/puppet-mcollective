@@ -23,6 +23,8 @@ define mcollective::client(
   $collectives     = ['mcollective'],
 ) {
 
+  include mcollective::package::client
+
   $mcollective_certname = "user:${name}:${fqdn}"
   $mcollective_ssl_dir = "${homedir}/.puppet/ssl"
 
