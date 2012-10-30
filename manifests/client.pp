@@ -48,7 +48,7 @@ define mcollective::client(
     content => "[main]\nserver = ${ca}\ncertname = ${mcollective_certname}",
   }
 
-  exec { "Request puppet certicate":
+  exec { "request-mc-cert(${mcollective_certname})":
     command => "puppet certificate --ca-location remote --terminus rest generate ${mcollective_certname}",
     creates => "${mcollective_ssl_dir}/private_keys/${mcollective_certname}.pem",
     require => File["${homedir}/.puppet/puppet.conf"],
@@ -61,14 +61,14 @@ define mcollective::client(
     group   => $group,
     mode    => '0600',
     source  => "${settings::ssldir}/certs/ca.pem",
-    require => Exec['Request puppet certificate'],
+    require => Exec["request-mc-cert(${mcollective_certname})"],
   }
 
   exec { "Attempt to download signed certificate":
     command => "curl --cacert ${mcollective_ssl_dir}/certs/ca.pem -H 'Accept: s' -s -O ${mcollective_ssl_dir}/certs/${mcollective_certname}.pem https://${server}:8140/production/certificate/${mcollective_certname}",
     creates => "${mcollective_ssl_dir}/certs/${mcollective_certname}.pem",
     require => [
-      Exec['Request puppet certificate'],
+      Exec["request-mc-cert(${mcollective_certname})"],
       File["${mcollective_ssl_dir}/certs/ca.pem"],
     ],
   }

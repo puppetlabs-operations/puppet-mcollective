@@ -29,7 +29,10 @@
 #   }
 define mcollective::connector::activemq($pool) {
 
-  mcollective::plugin { 'connector/activemq': }
+  if ! defined(Mcollective::Plugin['connector/activemq']) {
+    mcollective::plugin { 'connector/activemq': }
+  }
+
   concat::fragment { "${name} - activemq connector":
     content => template('mcollective/connector/activemq.cfg.erb'),
     order   => 20,
