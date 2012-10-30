@@ -27,10 +27,12 @@ define mcollective::client(
   $mcollective_ssl_dir = "${homedir}/.puppet/ssl"
 
   Exec {
-    logoutput => on_failure,
-    user      => $name,
-    group     => $group,
-    path      => '/usr/local/bin:/usr/bin:/bin',
+    logoutput   => on_failure,
+    user        => $name,
+    group       => $group,
+    path        => '/usr/local/bin:/usr/bin:/bin',
+    cwd         => $homedir,
+    environment => "HOME=${homedir}",
   }
 
   file { ["${homedir}/.puppet", "${homedir}/.puppet/ssl"]:
