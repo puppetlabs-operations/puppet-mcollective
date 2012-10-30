@@ -68,7 +68,7 @@ define mcollective::client(
     require => Exec["request-mc-cert(${mcollective_certname})"],
   }
 
-  exec { "Attempt to download signed certificate":
+  exec { "try-download-cert-(${mcollective_certname})":
     command => "curl --cacert ${mcollective_ssl_dir}/certs/ca.pem -H 'Accept: s' -s -o ${mcollective_ssl_dir}/certs/${mcollective_certname}.pem https://${ca}:8140/production/certificate/${mcollective_certname}",
     creates => "${mcollective_ssl_dir}/certs/${mcollective_certname}.pem",
     require => [
@@ -83,7 +83,7 @@ define mcollective::client(
     mode  => '0600',
   }
 
-  concat::fragment { 'client_base':
+  concat::fragment { "client-base-(${mcollective_certname})":
     target  => "${homedir}/.mcollective",
     order   => '00',
     content => template('mcollective/_mcollective.erb'),
