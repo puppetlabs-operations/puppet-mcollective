@@ -67,7 +67,7 @@ define mcollective::client(
   }
 
   exec { "Attempt to download signed certificate":
-    command => "curl --cacert ${mcollective_ssl_dir}/certs/ca.pem -H 'Accept: s' -s -O ${mcollective_ssl_dir}/certs/${mcollective_certname}.pem https://${ca}:8140/production/certificate/${mcollective_certname}",
+    command => "curl --cacert ${mcollective_ssl_dir}/certs/ca.pem -H 'Accept: s' -s -o ${mcollective_ssl_dir}/certs/${mcollective_certname}.pem https://${ca}:8140/production/certificate/${mcollective_certname}",
     creates => "${mcollective_ssl_dir}/certs/${mcollective_certname}.pem",
     require => [
       Exec["request-mc-cert(${mcollective_certname})"],
