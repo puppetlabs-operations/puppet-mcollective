@@ -11,10 +11,10 @@ define mcollective::connector (
   ],
 ) {
 
-  concat::fragment { "${type} connector":
+  concat::fragment { "${name} - ${type} connector":
     content => template("mcollective/connector/${type}.cfg.erb"),
     order   => 20,
-    target  => '/etc/mcollective/server.cfg',
+    target  => $name,
   }
 
 }
