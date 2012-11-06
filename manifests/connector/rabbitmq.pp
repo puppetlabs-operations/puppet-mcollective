@@ -23,7 +23,7 @@
 #           cert   => '/path/to/pem/certificate',
 #        },
 #        {
-#          # Additional activemq pool entries
+#          # Additional rabbitmq pool entries
 #        }
 #     ],
 #   }
@@ -33,5 +33,6 @@ define mcollective::connector::rabbitmq($pool) {
     content => template('mcollective/connector/rabbitmq.cfg.erb'),
     order   => 20,
     target  => $name,
+    require => Class['mcollective::server'],
   }
 }
