@@ -3,7 +3,7 @@ class mcollective::package::server {
   # ---
   # package requirements
 
-  case $operatingsystem {
+  case $::osfamily {
     Debian: {
       package { 'ruby-stomp':
         ensure => present,
