@@ -9,7 +9,7 @@ plugin.rabbitmq.pool.size = <%= pool.size %>
 plugin.rabbitmq.pool.<%= pool_number %>.<%= field %> = <%= pool[idx][field] %>
 <% end -%>
 
-<% if pool[idx]["ssl"] -%>
+<% if pool[idx]["ssl"].empty? == false %>
 plugin.rabbitmq.pool.<%= pool_number %>.ssl = 1
 <% %w{ca key cert}.each do |field| -%>
 plugin.rabbitmq.pool.<%= pool_number %>.ssl.<%= field %> = <%= pool[idx]["ssl"][field] %>
