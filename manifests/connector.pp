@@ -1,4 +1,4 @@
-class mcollective::connector (
+define mcollective::connector (
   $type = 'activemq',
   $pool = [
     {
