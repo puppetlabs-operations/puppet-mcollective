@@ -81,6 +81,19 @@ class mcollective::server(
     subscribe => File["${configdir}/server.cfg"],
   }
 
+  class { 'mcollective::connector':
+    type => $connector_type,
+    pool => [
+      {
+        host     => $connector_host,
+        port     => $connector_port,
+        user     => $connector_user,
+        password => $connector_password,
+        ssl      => $connector_ssl,
+      }
+    ],
+  }
+
   include mcollective::server::defaultplugins
   include mcollective::server::core_plugins
   include mcollective::server::custom_plugins
