@@ -94,6 +94,10 @@ class mcollective::server(
     ],
   }
 
+  mcollective::security::psk { '/etc/mcollective/server.cfg':
+    psk => $::mcollective::params::psk
+  }
+
   include mcollective::server::defaultplugins
   include mcollective::server::core_plugins
   include mcollective::server::custom_plugins
