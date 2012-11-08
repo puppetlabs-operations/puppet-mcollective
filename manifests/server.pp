@@ -1,4 +1,7 @@
-class mcollective::server($main_collective = 'mcollective', $collectives = ['mcollective']) {
+class mcollective::server(
+  $main_collective = 'mcollective',
+  $collectives     = ['mcollective']
+) {
 
   include mcollective::package::server
   include mcollective::params
