@@ -10,10 +10,10 @@ define mcollective::plugin($has_ddl = false, $module = 'mcollective') {
     ensure => present,
     mode   => '0644',
     owner  => 'root',
-    group  => 'root',
+    group  => 0,
     source => "puppet:///modules/${module}/plugins/${name}.rb",
     before => Package['mcollective'],
-    notify => Service['mcollective'],
+    notify => Service[$mcollective::params::servicename],
   }
 
   if $has_ddl {

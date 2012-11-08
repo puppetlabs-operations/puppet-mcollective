@@ -9,8 +9,8 @@ define mcollective::plugin::ddl($module = 'mcollective') {
     ensure => present,
     mode   => '0644',
     owner  => 'root',
-    group  => 'root',
+    group  => 0,
     source => "puppet:///modules/${module}/plugins/${name}.ddl",
-    before => [Package['mcollective'], Service['mcollective']],
+    before => [Package['mcollective'], Service[$mcollective::params::servicename]],
   }
 }

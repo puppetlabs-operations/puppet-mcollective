@@ -16,14 +16,14 @@ class mcollective::server::plugindir {
   file { [$mcollective::params::sharedir, $mcollective::params::libdir, "${mcollective::params::libdir}/mcollective"]:
     ensure  => directory,
     owner   => 'root',
-    group   => 'root',
+    group   => 0,
     mode    => '0755',
   }
 
   file { $plugin_dirs:
     ensure => directory,
     owner  => 'root',
-    group  => 'root',
+    group  => 0,
     mode   => '0755',
   }
 
