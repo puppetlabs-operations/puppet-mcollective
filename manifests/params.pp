@@ -6,16 +6,19 @@ class mcollective::params(
 
   case $kernel {
     'freebsd': {
-      $sharedir    = '/usr/local/share/mcollective'
-      $configdir   = '/usr/local/etc/mcollective'
-      $servicename = 'mcollectived'
+      $sharedir      = '/usr/local/share/mcollective'
+      $configdir     = '/usr/local/etc/mcollective'
+      $servicename   = 'mcollectived'
+      $custom_libdir = '/var/mcollective'
     }
     default: {
-      $sharedir    = '/usr/share/mcollective'
-      $configdir   = '/etc/mcollective'
-      $servicename = 'mcollective'
+      $sharedir      = '/usr/share/mcollective'
+      $configdir     = '/etc/mcollective'
+      $servicename   = 'mcollective'
+      $custom_libdir = '/var/lib/mcollective'
     }
   }
 
-  $libdir      = "${sharedir}/plugins"
+  # Plugins installed by the mcollective package will be put here.
+  $core_libdir = "${sharedir}/plugins"
 }
