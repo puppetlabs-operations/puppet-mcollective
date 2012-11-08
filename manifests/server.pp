@@ -9,6 +9,10 @@ class mcollective::server(
   $configdir   = $mcollective::params::configdir
   $servicename = $mcollective::params::servicename
 
+  $core_libdir   = $mcollective::params::core_libdir
+  $custom_libdir = $mcollective::params::custom_libdir
+  $extra_libdirs = $mcollective::params::extra_libdirs
+
   # Mcollective will break itself by default, so we need to get there first
   file { $configdir:
     ensure => directory,
@@ -18,9 +22,9 @@ class mcollective::server(
   }
 
   concat { "${configdir}/server.cfg":
-    mode    => '0600',
-    owner   => 'root',
-    group   => 0,
+    mode   => '0600',
+    owner  => 'root',
+    group  => 0,
     before => Package['mcollective'],
   }
 
@@ -38,6 +42,6 @@ class mcollective::server(
   }
 
   include mcollective::server::defaultplugins
-  include mcollective::server::plugindir
-
+  include mcollective::server::core_plugins
+  include mcollective::server::custom_plugins
 }

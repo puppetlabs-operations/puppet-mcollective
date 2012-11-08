@@ -1,24 +1,25 @@
-class mcollective::server::plugindir {
+# = Class: mcollective::server::custom_plugins
+#
+# Custom plugins are anything installed by the user and not the package. They
+# are split out from the core plugins so that the core plugins are not modified.
+#
+class mcollective::server::custom_plugins {
 
   include mcollective::params
 
   $plugin_dirs = [
-    "${mcollective::params::libdir}/mcollective/agent",
-    "${mcollective::params::libdir}/mcollective/application",
-    "${mcollective::params::libdir}/mcollective/audit",
-    "${mcollective::params::libdir}/mcollective/connector",
-    "${mcollective::params::libdir}/mcollective/facts",
-    "${mcollective::params::libdir}/mcollective/registration",
-    "${mcollective::params::libdir}/mcollective/security",
-    "${mcollective::params::libdir}/mcollective/util",
+    $mcollective::params::custom_sharedir,
+    $mcollective::params::custom_libdir,
+    "${mcollective::params::custom_libdir}/mcollective",
+    "${mcollective::params::custom_libdir}/mcollective/agent",
+    "${mcollective::params::custom_libdir}/mcollective/application",
+    "${mcollective::params::custom_libdir}/mcollective/audit",
+    "${mcollective::params::custom_libdir}/mcollective/connector",
+    "${mcollective::params::custom_libdir}/mcollective/facts",
+    "${mcollective::params::custom_libdir}/mcollective/registration",
+    "${mcollective::params::custom_libdir}/mcollective/security",
+    "${mcollective::params::custom_libdir}/mcollective/util",
   ]
-
-  file { [$mcollective::params::sharedir, $mcollective::params::libdir, "${mcollective::params::libdir}/mcollective"]:
-    ensure  => directory,
-    owner   => 'root',
-    group   => 0,
-    mode    => '0755',
-  }
 
   file { $plugin_dirs:
     ensure => directory,
@@ -26,6 +27,4 @@ class mcollective::server::plugindir {
     group  => 0,
     mode   => '0755',
   }
-
-
 }

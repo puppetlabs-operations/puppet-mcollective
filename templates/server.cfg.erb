@@ -1,5 +1,5 @@
 topicprefix = <%= scope.lookupvar('mcollective::params::topicprefix') %>
-libdir      = <%= scope.lookupvar('mcollective::params::libdir') %>
+libdir      = <%= [@core_libdir, @custom_libdir, @extra_libdirs].flatten.compact.join(':') %>
 logfile     = <%= scope.lookupvar('mcollective::params::logfile') %>
 loglevel    = <%= scope.lookupvar('mcollective::params::loglevel') %>
 identity    = <%= scope.lookupvar('::clientcert') %>
