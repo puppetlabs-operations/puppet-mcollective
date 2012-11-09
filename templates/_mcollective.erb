@@ -1,5 +1,5 @@
 libdir      = <%= scope.lookupvar('mcollective::params::libdir') %>
-loglevel    = <%= scope.lookupvar('mcollective::params::loglevel') %>
+loglevel    = <%= scope.lookupvar('mcollective::params::mcollective_loglevel') %>
 logfile     = <%= File.join(homedir, '.mcollective.log') %>
 
 main_collective = <%= main_collective %>

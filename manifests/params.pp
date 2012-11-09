@@ -1,8 +1,8 @@
 class mcollective::params(
-  $topicprefix   = '/topic/',
-  $logfile       = '/var/log/mcollective.log',
-  $loglevel      = 'warn',
-  $extra_libdirs = [],
+  $topicprefix          = '/topic/',
+  $logfile              = '/var/log/mcollective.log',
+  $mcollective_loglevel = 'warn',
+  $extra_libdirs        = [],
 ) {
 
   case $kernel {
