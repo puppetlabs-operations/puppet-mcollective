@@ -27,7 +27,7 @@ define mcollective::plugin(
 ) {
 
   include mcollective::params
-  require mcollective::server
+  include mcollective::server
 
   $filebase = "${mcollective::params::custom_libdir}/mcollective/${name}"
 
