@@ -40,18 +40,10 @@ class mcollective::package::server {
       # The mcollective package drops all plugins in /usr/local/share/mcollective
       # which breaks the mcollective libdir path, which expects "${libdir}/mcollective"
       # so we patch that in with a symlink
-      file {
-        $mcollective::params::core_libdir:
-          ensure => directory,
-          owner  => 'root',
-          group  => 0,
-          mode   => '0755',
-          backup => false,
-          before => Service[$mcollective::params::servicename];
-        "${mcollective::params::core_libdir}/mcollective":
-          ensure => link,
-          target => $mcollective::params::sharedir,
-          before => Service[$mcollective::params::servicename];
+      file { "${mcollective::params::core_libdir}/mcollective":
+        ensure => link,
+        target => $mcollective::params::sharedir,
+        before => Service[$mcollective::params::servicename];
       }
     }
   }

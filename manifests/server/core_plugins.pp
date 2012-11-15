@@ -12,7 +12,6 @@ class mcollective::server::core_plugins {
   include mcollective::params
 
   $core_dirs = [
-    "${mcollective::params::core_libdir}/mcollective",
     "${mcollective::params::core_libdir}/mcollective/agent",
     "${mcollective::params::core_libdir}/mcollective/application",
     "${mcollective::params::core_libdir}/mcollective/audit",
