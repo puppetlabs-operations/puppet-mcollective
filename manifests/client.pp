@@ -83,6 +83,10 @@ define mcollective::client(
     mode  => '0600',
   }
 
+  $core_libdir   = $mcollective::params::core_libdir
+  $custom_libdir = $mcollective::params::custom_libdir
+  $extra_libdirs = $mcollective::params::extra_libdirs
+
   concat::fragment { "client-base-(${mcollective_certname})":
     target  => "${homedir}/.mcollective",
     order   => '00',
