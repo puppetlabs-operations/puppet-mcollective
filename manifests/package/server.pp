@@ -1,3 +1,12 @@
+# = Class: mcollective::package::server
+#
+# This class will pull in the mcollective::package::stomp dependency and
+# install the mcollective server. It will also add in the necessary shims
+# on different platforms to ensure the server works as expected.
+#
+# This class will be brought in by mcollective::server and does not need to be
+# directly included.
+#
 class mcollective::package::server {
 
   include mcollective::params
@@ -7,11 +16,11 @@ class mcollective::package::server {
     ensure  => present,
   }
 
-  # Mcollective packages currently install into ruby/1.8 instead of vendor_ruby
-  # for compatibility with hardy. If the current rubyversion is 1.9 then we
-  # need symlinks so mcollective can find itself.
   case $operatingsystem {
     Debian: {
+      # Mcollective packages currently install into ruby/1.8 instead of vendor_ruby
+      # for compatibility with hardy. If the current rubyversion is 1.9 then we
+      # need symlinks so mcollective can find itself.
       if $rubyversion =~ /^1\.9/ {
         file {
           '/usr/lib/ruby/vendor_ruby/mcollective.rb':
