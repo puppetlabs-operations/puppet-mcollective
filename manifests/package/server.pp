@@ -12,6 +12,13 @@ class mcollective::package::server {
         before => Package['mcollective'],
       }
     }
+    FreeBSD: {
+      package { 'stomp':
+        ensure   => present,
+        provider => gem,
+        before   => Package['mcollective'],
+      }
+    }
   }
 
   package { 'mcollective':
