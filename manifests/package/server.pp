@@ -1,25 +1,7 @@
 class mcollective::package::server {
 
   include mcollective::params
-
-  # ---
-  # package requirements
-
-  case $::osfamily {
-    Debian: {
-      package { 'ruby-stomp':
-        ensure => present,
-        before => Package['mcollective'],
-      }
-    }
-    FreeBSD: {
-      package { 'stomp':
-        ensure   => present,
-        provider => gem,
-        before   => Package['mcollective'],
-      }
-    }
-  }
+  require mcollective::package::stomp
 
   package { 'mcollective':
     ensure  => present,

@@ -12,6 +12,9 @@ class mcollective::params(
       $configdir       = '/usr/local/etc/mcollective'
       $servicename     = 'mcollectived'
       $custom_sharedir = '/var/mcollective'
+
+      $stomp_pkgname   = 'stomp'
+      $stomp_provider  = 'gem'
     }
     'RedHat': {
       $sharedir        = '/usr/libexec/mcollective'
@@ -19,6 +22,9 @@ class mcollective::params(
       $configdir       = '/etc/mcollective'
       $servicename     = 'mcollective'
       $custom_sharedir = '/var/lib/mcollective'
+
+      $stomp_pkgname   = 'rubygem-stomp'
+      $stomp_provider  = 'yum'
     }
     default: {
       $sharedir        = '/usr/share/mcollective'
@@ -26,6 +32,9 @@ class mcollective::params(
       $configdir       = '/etc/mcollective'
       $servicename     = 'mcollective'
       $custom_sharedir = '/var/lib/mcollective'
+
+      $stomp_pkgname   = 'ruby-stomp'
+      $stomp_provider  = 'apt'
     }
   }
 
