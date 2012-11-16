@@ -1,3 +1,43 @@
+# = Class: mcollective::server
+#
+# This class installs mcollective and lays down the core configuration for an
+# mcollective server.
+#
+# Note that to bring the mcollective server online you need to additionally
+# supply a security plugin and connector.
+#
+# == Parameters
+#
+# [*main_collective*]
+#
+# The collective mcollective will use when sending registration messages.
+#
+# default: 'mcollective'
+#
+# [*collectives*]
+#
+# A list of collectives mcollective should join.
+#
+# default: ['mcollective']
+#
+# == Examples
+#
+#     # Install an mcollective server with a single collective
+#     include mcollective::server
+#
+#     # Install an mcollective server, send registration messages to the
+#     # 'mcollective' collective, and additionally join the uk and eu
+#     # collectives
+#     class { 'mcollective::server':
+#       main_collective => 'mcollective',
+#       collectives     => ['mcollective', 'uk_collective', 'eu_collective'],
+#     }
+#
+# == See also
+#
+#   * `manifests/connector/*`
+#   * `manifests/security/*`
+#
 class mcollective::server(
   $main_collective = 'mcollective',
   $collectives     = ['mcollective']
