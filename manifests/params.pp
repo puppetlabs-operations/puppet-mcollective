@@ -3,6 +3,19 @@ class mcollective::params(
   $logfile              = '/var/log/mcollective.log',
   $mcollective_loglevel = 'warn',
   $extra_libdirs        = [],
+  $host                 = 'localhost',
+  $port                 = '61614',
+  $user                 = 'mcollective',
+  $password             = '',
+  $psk                  = '',
+  $pool                 = [ {
+    'host'     => 'localhost',
+    'port'     => '61614',
+    'user'     => 'mcollective',
+    'password' => 'mcollective',
+    'ssl'      => {},
+    'type'     => 'activemq',
+  } ]
 ) {
 
   case $osfamily {
@@ -39,4 +52,5 @@ class mcollective::params(
   }
 
   $custom_libdir = "${custom_sharedir}/plugins"
+
 }
