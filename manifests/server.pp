@@ -94,7 +94,4 @@ class mcollective::server(
   include mcollective::server::core_plugins
   include mcollective::server::custom_plugins
 
-  Class['mcollective::package::server'] -> Class['mcollective::server::defaultplugins']
-  Class['mcollective::package::server'] -> Class['mcollective::server::core_plugins']
-  Class['mcollective::package::server'] -> Class['mcollective::server::custom_plugins']
 }
