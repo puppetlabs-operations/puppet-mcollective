@@ -62,7 +62,6 @@ define mcollective::plugin(
     owner  => 'root',
     group  => 0,
     source => "puppet:///modules/${module}/plugins/${name}.rb",
-    before => Package['mcollective'],
     notify => Service[$mcollective::params::servicename],
   }
 
