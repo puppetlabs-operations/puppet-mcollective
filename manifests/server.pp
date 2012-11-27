@@ -82,16 +82,8 @@ class mcollective::server(
   }
 
   mcollective::connector { '/etc/mcollective/server.cfg':
-    type => $connector_type,
-    pool => [
-      {
-        host     => $connector_host,
-        port     => $connector_port,
-        user     => $connector_user,
-        password => $connector_password,
-        ssl      => $connector_ssl,
-      }
-    ],
+    type => $mcollective::params::connector_type,
+    pool => $mcollective::params::pool,
   }
 
   mcollective::security::psk { '/etc/mcollective/server.cfg':

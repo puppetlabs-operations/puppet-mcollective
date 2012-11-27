@@ -1,13 +1,10 @@
 class mcollective::params(
-  $topicprefix          = '/topic/',
-  $logfile              = '/var/log/mcollective.log',
-  $mcollective_loglevel = 'warn',
+  $connector_type       = 'activemq',
   $extra_libdirs        = [],
   $host                 = 'localhost',
-  $port                 = '61614',
-  $user                 = 'mcollective',
+  $logfile              = '/var/log/mcollective.log',
+  $mcollective_loglevel = 'warn',
   $password             = '',
-  $psk                  = '',
   $pool                 = [ {
     'host'     => 'localhost',
     'port'     => '61614',
@@ -15,7 +12,11 @@ class mcollective::params(
     'password' => 'mcollective',
     'ssl'      => {},
     'type'     => 'activemq',
-  } ]
+  } ],
+  $port                 = '61614',
+  $psk                  = '',
+  $topicprefix          = '/topic/',
+  $user                 = 'mcollective',
 ) {
 
   case $osfamily {
