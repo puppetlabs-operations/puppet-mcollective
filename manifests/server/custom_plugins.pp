@@ -26,6 +26,5 @@ class mcollective::server::custom_plugins {
     owner   => 'root',
     group   => 0,
     mode    => '0755',
-    require => Class['mcollective::package::server'],
   }
 }

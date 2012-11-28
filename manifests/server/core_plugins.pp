@@ -27,6 +27,5 @@ class mcollective::server::core_plugins {
     owner       => 'root',
     group       => 0,
     mode        => '0755',
-    require     => Class['mcollective::package::server'],
   }
 }
