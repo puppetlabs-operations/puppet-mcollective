@@ -90,8 +90,15 @@ class mcollective::server(
     psk => $::mcollective::params::psk
   }
 
+  include mcollective::server::directories
   include mcollective::server::defaultplugins
   include mcollective::server::core_plugins
   include mcollective::server::custom_plugins
+
+  Class['mcollective::server::directories']
+    -> Class['mcollective::server::defaultplugins']
+
+  Class['mcollective::server::directories']
+    -> Class['mcollective::server::core_plugins']
 
 }
