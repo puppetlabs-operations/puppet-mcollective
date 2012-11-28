@@ -1,4 +1,4 @@
-class mcollective::server::dependencies {
+class mcollective::server::directories {
 
   include '::mcollective::params'
 
