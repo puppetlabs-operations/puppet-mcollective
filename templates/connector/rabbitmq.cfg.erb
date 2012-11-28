@@ -10,7 +10,7 @@ plugin.rabbitmq.vhost = /mcollective
 plugin.rabbitmq.pool.<%= pool_number %>.<%= field %> = <%= pool[idx][field] %>
 <% end -%>
 
-<% if pool[idx]["ssl"].empty? == false %>
+<% if pool[idx]["ssl"] -%>
 plugin.rabbitmq.pool.<%= pool_number %>.ssl = 1
 <% %w{ca key cert}.each do |field| -%>
 plugin.rabbitmq.pool.<%= pool_number %>.ssl.<%= field %> = <%= pool[idx]["ssl"][field] %>
