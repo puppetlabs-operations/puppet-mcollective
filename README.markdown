@@ -3,6 +3,12 @@ puppet-mcollective
 
 100% free trade, cruelty free, organic Puppet module for managing mcollective
 
+Requirements
+------------
+
+  * The Puppet Labs package repositories
+  * By extension, mcollective 2.2 is required.
+
 Contributors
 ------------
 
