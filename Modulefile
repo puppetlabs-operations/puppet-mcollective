@@ -13,3 +13,5 @@ DESCRIPTION
 
 source 'https://github.com/puppetlabs-operations/puppet-mcollective'
 project_page 'https://github.com/puppetlabs-operations/puppet-mcollective'
+
+dependency 'ripienaar/concat',   '>= 0.2.0'
