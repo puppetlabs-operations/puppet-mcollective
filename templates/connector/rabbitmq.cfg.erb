@@ -2,6 +2,7 @@
 direct_addressing = 1
 connector = rabbitmq
 plugin.rabbitmq.pool.size = <%= pool.size %>
+plugin.rabbitmq.vhost = /mcollective
 
 <% pool.each_index do |idx| -%>
 <% pool_number = idx + 1 -%>

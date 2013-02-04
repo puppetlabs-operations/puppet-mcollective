@@ -16,12 +16,12 @@ class mcollective::package::server {
     ensure  => present,
   }
 
-  case $operatingsystem {
+  case $::osfamily {
     Debian: {
       # Mcollective packages currently install into ruby/1.8 instead of vendor_ruby
       # for compatibility with hardy. If the current rubyversion is 1.9 then we
       # need symlinks so mcollective can find itself.
-      if $rubyversion =~ /^1\.9/ {
+      if $::rubyversion =~ /^1\.9/ {
         file {
           '/usr/lib/ruby/vendor_ruby/mcollective.rb':
             ensure => link,

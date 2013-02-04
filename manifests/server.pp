@@ -81,7 +81,24 @@ class mcollective::server(
     subscribe => File["${configdir}/server.cfg"],
   }
 
+  mcollective::connector { '/etc/mcollective/server.cfg':
+    type => $mcollective::params::connector_type,
+    pool => $mcollective::params::pool,
+  }
+
+  mcollective::security::psk { '/etc/mcollective/server.cfg':
+    psk => $::mcollective::params::psk
+  }
+
+  include mcollective::server::directories
   include mcollective::server::defaultplugins
   include mcollective::server::core_plugins
   include mcollective::server::custom_plugins
+
+  Class['mcollective::server::directories']
+    -> Class['mcollective::server::defaultplugins']
+
+  Class['mcollective::server::directories']
+    -> Class['mcollective::server::core_plugins']
+
 }

@@ -22,9 +22,9 @@ class mcollective::server::custom_plugins {
   ]
 
   file { $plugin_dirs:
-    ensure => directory,
-    owner  => 'root',
-    group  => 0,
-    mode   => '0755',
+    ensure  => directory,
+    owner   => 'root',
+    group   => 0,
+    mode    => '0755',
   }
 }

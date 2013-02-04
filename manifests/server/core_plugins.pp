@@ -23,9 +23,9 @@ class mcollective::server::core_plugins {
   ]
 
   file { $core_dirs:
-    ensure  => directory,
-    owner   => 'root',
-    group   => 0,
-    mode    => '0755',
+    ensure      => directory,
+    owner       => 'root',
+    group       => 0,
+    mode        => '0755',
   }
 }

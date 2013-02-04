@@ -12,7 +12,6 @@ define mcollective::plugin::ddl($module = 'mcollective') {
     group  => 0,
     source => "puppet:///modules/${module}/plugins/${name}.ddl",
     before => [
-      Package['mcollective'],
       Service[$mcollective::params::servicename]
     ],
   }

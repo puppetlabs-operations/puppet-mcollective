@@ -1,8 +1,22 @@
 class mcollective::params(
-  $topicprefix          = '/topic/',
+  $connector_type       = 'activemq',
+  $extra_libdirs        = [],
+  $host                 = 'localhost',
   $logfile              = '/var/log/mcollective.log',
   $mcollective_loglevel = 'warn',
-  $extra_libdirs        = [],
+  $password             = '',
+  $pool                 = [ {
+    'host'     => 'localhost',
+    'port'     => '61614',
+    'user'     => 'mcollective',
+    'password' => 'mcollective',
+    'ssl'      => {},
+    'type'     => 'activemq',
+  } ],
+  $port                 = '61614',
+  $psk                  = '',
+  $topicprefix          = '/topic/',
+  $user                 = 'mcollective',
 ) {
 
   case $osfamily {
@@ -39,4 +53,5 @@ class mcollective::params(
   }
 
   $custom_libdir = "${custom_sharedir}/plugins"
+
 }
